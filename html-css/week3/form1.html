@@ -42,12 +42,13 @@
 
         <progress class="progressbar" value=25 max=100></progress><br>
 
+        <div class="links">
         <a href="form2.html">customerdetails</a>
         <a href="form3.html">customercontacts</a>
         <a href="form4.html">customerpreferences</a>
         <a href="form5.html">paymentpage</a>
         
-
+</div>
         <p>Nice to meet you. Lets spend a minute to get to know each other?
             Please enter the following:</p>  
 <form>
@@ -59,7 +60,7 @@
     <input firstname="First name" id="firstname"placeholder="enter your first name"required/>
 
     <label>last name</label>
-    <input lastname="Last name" id="lastname"placeholder="enter your last name"/>
+    <input lastname="Last name" id="lastname"placeholder="enter your last name"required/>
 </div>
 
 <div class="country">
@@ -75,10 +76,10 @@
 
 <div class="clientadress">
 <label>street adress</label>
-<input street adress="Street adress">
+<input street adress="Street adress"required/>
 
 <label>postcode</label>
-    <input postcode="Post code" id="post code"/>
+    <input postcode="Post code" id="post code"required/>
 </div>
 
 <div class="profilebox">
@@ -89,14 +90,15 @@
 </div>
 
 </div class="textarea">
-<textarea id="profileDescription"name="profile description"></textarea>
+<textarea id="profileDescription"name="profile description" 
+col="40" rows="10" minlength="40" maxlength="600"></textarea>
 </div>
 
 </div>
 <br>
 
 <label>Shipping adress</label>
-<input type="checkbox" value="Shipping adress"></input>
+<input type="checkbox" value="Shipping adress" checked></input>
 
 <button class="nextpage"><a href="form2.html">next</a></button>
 
