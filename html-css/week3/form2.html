@@ -49,11 +49,11 @@
         <div class="customername">
             <label>first name</label>
             <input firstname="First name" id="firstname"
-            placeholder="enter your first name"/>
+            placeholder="enter your first name"required/>
         
             <label>last name</label>
             <input lastname="Last name" id="lastname"
-            placeholder="enter your last name"/>
+            placeholder="enter your last name"required/>
         </div>
         
         <div class="country">
@@ -69,14 +69,16 @@
         
         <div class="customeradress">
         <label>street adress</label>
-        <input street adress="Street adress">
+        <input street adress="Street adress"required/>
         
         <label>postcode</label>
-            <input postcode="Post code" id="post code"/>
+            <input postcode="Post code" id="post code"required/>
         </div>
 
         <p>Use the same adress for billing and shipping?Uncheck the box, 
             and fill out below separate adress.</p>
+
+            
         <label>Shipping adress</label>
         <input type="checkbox" value="Shipping adress"></input>
         <br>
@@ -121,7 +123,8 @@
 </div>
 
 </div class="textarea">
-<textarea id="profileDescription"name="profile description"></textarea>
+<textarea id="profileDescription"name="profile description"
+col="40" rows="10" minlength="40" maxlength="600"></textarea>></textarea>
 </div>
 
 </div>
