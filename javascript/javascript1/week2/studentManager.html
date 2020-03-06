@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const class07Students = [];
+      function addStudentToClass(studentName) {
+        if (class07Students.length < 6) {
+          if (studentName != "") {
+            class07Students.push(studentName);
+            console.log(
+              studentName,
+              "successfully added to class",
+              class07Students
+            );
+          }
+        } else if (class07Students.includes(studentName)) {
+          console.log(
+            "Student " + studentName + "is already in the class",
+            class07Students
+          );
+        } else {
+          console.log("Cannot add more students to class 07");
+        }
+      }
+
+      addStudentToClass("Jane");
+      addStudentToClass("");
+      addStudentToClass("Peter");
+      addStudentToClass("Paul");
+      addStudentToClass("Jean");
+      addStudentToClass("Jesie");
+      addStudentToClass("Jan");
+      addStudentToClass("red");
+
+      function getNumberOfStudents() {
+        let numberOfStudents = class07Students.length;
+        return "The number of students in class is " + numberOfStudents;
+      }
+      console.log(getNumberOfStudents());
+    </script>
+  </body>
+</html>

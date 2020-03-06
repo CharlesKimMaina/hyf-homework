@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function getFullName(firstName, lastName, useFormalName) {
+        let fullName1 = firstName;
+        let fullName2 = lastName;
+
+        if ((useFormalName = false)) {
+          return "Lord "  + firstName + " " + lastName;
+        } else {
+          return firstName + " " + lastName;
+        }
+      }
+      console.log(getFullName("Jane", "Paul"));
+    </script>
+  </body>
+</html>
