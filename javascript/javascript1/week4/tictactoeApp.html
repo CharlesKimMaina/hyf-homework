@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         const position = [
+ ['o', ' ', ' '],
+ ['o', ' ', ' '],
+ ['o', ' ', ' ']
+ ];
+
+const position = [
+  [' ', ' ', 'o'],
+  [' ', ' ', 'o'],
+  [' ', ' ', 'o']
+];
+
+const position = [
+ ['o', 'o', 'o'],
+[' ', ' ', ' '],
+[' ', ' ', ' ']
+];
+
+const position = [
+[' ', ' ', ' '],
+ ['o', 'o', 'o'],
+[' ', ' ', ' ']
+ ]; 
+
+const position = [
+  [' ', ' ', ' '],
+  [' ', ' ', ' '],
+ ['o', 'o', 'o']
+];
+
+const position = [
+ ['o', ' ', ' '],
+ [' ', 'o', ' '],
+[' ', ' ', 'o']
+];
+
+const position = [
+ [' ', ' ', 'o'],
+[' ', 'o', ' '],
+['o', ' ', ' ']
+];
+
+const position = [
+  [' ', 'x', ' '],
+  [' ', 'x', ' '],
+  [' ', 'x', ' ']
+];
+
+console.log(position[0][1])
+console.log(position[1][1])
+console.log(position[2][1])
+
+function hasWon(position, player){
+    return (position[0][1] === player && position[1][1] === player  && position[2][1] === player)  || (position[0][2] === player && position[1][1] === player  && position[2][0] === player)
+}
+console.log(hasWon(position, 'x'))
+console.log(hasWon(position, 'o'))
+
+    </script>
+</body>
+</html>
