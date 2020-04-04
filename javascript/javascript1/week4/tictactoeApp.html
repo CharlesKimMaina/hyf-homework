@@ -60,13 +60,7 @@ console.log(position[1][1])
 console.log(position[2][1])
 
 function hasWon(position, player){
-	if( position[0][1] === player && position[1][1] === player  && position[2][1] === player ){
-		return true
-	}else if( position[0][2] === player && position[1][1] === player  && position[2][0] === player ){
-		return true
-	}
-
-	return false
+    return (position[0][1] === player && position[1][1] === player  && position[2][1] === player)  || (position[0][2] === player && position[1][1] === player  && position[2][0] === player)
 }
 console.log(hasWon(position, 'x'))
 console.log(hasWon(position, 'o'))
