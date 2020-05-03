@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Different cities Weathers</title>
+</head>
+<style>
+    .input{
+        text-align: center;        
+    }
+    input[type="text"]{
+        height:70px;
+        width:500px;
+        background-color: #8c1111;
+        font-family: "Nunito", sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        border:none;
+        border-radius: 4px;
+        padding:10px 30px; 
+    }
+
+    input[type="submit"]{
+        height:40px;
+        width:130px;
+        background-color: #8c1111;
+        font-family: "Nunito", sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        border:none;
+        border-radius: 4px;
+    }
+
+    .display{
+        text-align: center;
+    }
+</style>
+<body>
+
+    <div class="input">
+        <input type="text" class="inputValue" placeholder="Enter a city"required>
+        <input type="submit" value="Submit" class="button">
+    </div>
+
+    <div class="display">
+        <h1 class="name"></h1>
+        <p class="temperature"></p>
+        <p class="windSpeed"></p>
+        <p class="cloudyStatus"></p>
+        <p class="sunrise"></p>
+                                  
+    </div>
+
+    <script>
+
+       var button = document.querySelector(".button") 
+        var inputValue = document.querySelector(".inputValue")
+        var name = document.querySelector(".name")
+        var temperature = document.querySelector(".temperature")
+        var windSpeed = document.querySelector(".windSpeed")
+        var cloudyStatus = document.querySelector(".cloudyStatus")
+        var sunrise = document.querySelector(".sunrise")
+        
+        
+
+        button.addEventListener("click", function(){
+            fetch('http://api.openweathermap.org/data/2.5/weather?q='+inputValue.value+'&APPID=83213d88197c73f0c991024226083a52')
+        .then(response => response.json())
+        .then(data => {
+            var nameValue = data["name"];
+            var temperatureValue = data["main"]["temp"];
+            var windSpeedValue = data["wind"]["speed"];
+            var cloudyStatusValue = data["weather"][0]["description"];
+            var sunriseValue = data["sys"][2]||[3];
+            
+ 
+            name.innerHTML = nameValue;
+            temperature.innerHTML = temperatureValue;
+            windSpeed.innerHTML = windSpeedValue;
+            cloudyStatus.innerHTML = cloudyStatusValue;
+            sunrise.innerHTML = sunriseValue;
+            
+
+        })
+
+        .catch(err=> alert("You have typed wrong city name"))
+        })
+
+
+    </script>
+</body>
+</html>
