@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gif Api</title>
+</head>
+<style>
+    #btn{
+    height:50px;
+    border-radius: 7px;
+    width:180px;
+    background-color: rgb(7, 39, 107);
+    color: white;
+}
+#container-input{
+    text-align: center;    
+}
+
+#input-textbox{
+    height :40px;
+    border-radius: 5px;
+    margin-bottom: 1%;
+    margin-top:1%;
+    width: 200px;
+}
+
+#input-number{
+    height :40px;
+    border-radius: 5px;
+    margin-bottom: 1%;
+    margin-top:1%;
+    width: 200px;
+}
+
+</style>
+
+<body>
+ <h1>Giffy Searcher</h1>
+
+ <div id="container-input">
+    <input type="text" id="input-textbox" placeholder="Search for gifs" required><br>
+    <button type="button" id="btn">Search for gifs here!</button><br>
+    <input type="text" id="input-number" placeholder="Number of gifs" required>
+    <ul id =gifImage></ul>
+</div>
+    <script>
+const input = document.getElementById("input-textbox");
+const button = document.getElementById("btn");
+const gifTagUl = document.getElementById("gifImage");
+const inputNumber = document.getElementById("input-number");
+
+function displayGif(){
+    if (input.value === ""){
+        alert("Please enter a real word");
+        return; 
+    }
+    if (input.value || inputNumber.value){
+        fetchGif(input.value);
+    }
+    
+}
+button.addEventListener("click", displayGif);
+const fetchGif=(searchWord)=>{
+    const url = new URL('https://api.giphy.com/v1/gifs/search');
+    let params;
+    if(inputNumber.value){
+    params = {q:searchWord, api_key:'KxWzTYm52uDfZC9cZ8OIoBVk4NI7jubT',limit:inputNumber.value};
+    }
+    else{
+        params = {q:searchWord, api_key:'KxWzTYm52uDfZC9cZ8OIoBVk4NI7jubT'};
+
+    }
+
+    url.search = new URLSearchParams(params).toString();
+    fetch(url)
+  .then(response => response.json())
+  .then(result => {
+      gifTagUl.innerHTML = "";
+    result.data.forEach(gif =>{
+        let imgTag = document.createElement('img');
+        imgTag.setAttribute('src', gif.images.original.url);
+        const li = document.createElement('li');
+        li.appendChild(imgTag);
+        gifTagUl.appendChild(li);
+        
+    } );
+    
+
+})
+}
+
+
+
+    </script>
+</body>
+</html>
