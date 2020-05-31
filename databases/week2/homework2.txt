@@ -39,7 +39,7 @@ UPDATE task
  SET status_id= 3
  WHERE status_id= 2;
 
---Delete task.
+--Delete from task.
 DELETE task
  WHERE title = 'cards';
 
@@ -69,15 +69,26 @@ FOREIGN KEY `class_id` INT (10)
 );
 
 --Create an index on the name column of the student table.
+
 ALTER TABLE student ADD INDEX idx_name (name);
+
 --Or 
+
 CREATE INDEX idx_name
 ON student (name);
-/*Adding  a new column to the class table named status which can only have the following values: not-started, ongoing, finished (hint: enumerations).*/
-ALTER TABLE class 
-ADD status 
-Values ENUM(‘not started’, ‘ongoing’, ‘finished’);
 
+
+/*Adding  a new column to the class table named status which can only have the following values: not-started, ongoing, finished (hint: enumerations).*/
+
+ALTER TABLE
+    `table_class`
+ADD COLUMN
+    `column_Status` enum(
+        'not started',
+        'ongoing',
+        'finished'
+    )
+NOT NULL AFTER `column_ending_date`;
 
 PART3.
 --- Get all the tasks assigned to users whose email ends in @spotify.com
@@ -85,7 +96,7 @@ SELECT *
 FROM task
 LEFT JOIN user 
 ON task.status_id = user.id
-WHERE email LIKE ‘%@spotify.com’;
+WHERE email LIKE '%@spotify.com';
 
 
 --- Get all the tasks for 'Donald Duck' with status 'Not started'
@@ -141,37 +152,13 @@ ORDER BY month created
 
 
 Part 4: Creating a database
-/*Your application must include at least one many-to-many relationship and any supporting tables (linking tables) that are needed. The entity relationship diagram must describe what tables you will need, the columns in these tables, which column is the primary key, and the relationships between tables.*/
+/*Your application must include at least one many-to-many relationship and any supporting tables (linking tables) that are needed. 
+The entity relationship diagram must describe what tables you will need, the columns in these tables, 
+which column is the primary key, and the relationships between tables.*/
  
+-- ER Diagram is attached in PDF. Format aside.
 
 
-CREATE TABLE ´user´(
-User_ID ,INT,
-name varchar(255),
-email VARCHAR (255),
-Phone varchar(255),
-PRIMARY KEY (User_ID)
-);
 
-CREATE TABLE `status`(
-status_ID, INT,
-
-name varchar(255),
-PRIMARY KEY (status_id)
-);
-
-CREATE TABLE `task` (
-Task_ID, INT,
-title, varchar(50),
-To address, VARCHAR(255)
-Description VARCHAR(255),
-Created DATETIME
-Updated DATETIME
-Due_date DATETIME
-Status_ID INT,
-User_ID
-PRIMARY KEY (‘Task_ID’)
-FOREIGN KEY (‘status_ID’, ‘user_ID’)
-);
 
 
