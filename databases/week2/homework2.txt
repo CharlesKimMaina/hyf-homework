@@ -81,14 +81,14 @@ ON student (name);
 /*Adding  a new column to the class table named status which can only have the following values: not-started, ongoing, finished (hint: enumerations).*/
 
 ALTER TABLE
-    `table_class`
+    `class`
 ADD COLUMN
     `column_Status` enum(
         'not started',
         'ongoing',
         'finished'
-    )
-NOT NULL AFTER `column_ending_date`;
+    );
+
 
 PART3.
 --- Get all the tasks assigned to users whose email ends in @spotify.com
