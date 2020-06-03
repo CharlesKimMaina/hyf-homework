@@ -1,0 +1,166 @@
+CHARLES MAINA DATABASE WEEK 2 HOMEWORK, CLASS 13.
+PART1.
+USE hyflesson2;
+
+--Add a task with these attributes: title, description, created, updated, due_date, status_id, user_id
+
+ INSERT INTO task
+ (title, 
+description, 
+created,
+ updated, 
+ due_date, 
+status_id)
+ VALUES (
+'chess',
+ 'play with queen and pawns, bishop is defender', 
+'2020-05-15',
+'2020-05-20',
+'2020-05-29',
+3);
+ 
+--Change the title of a task
+ UPDATE task
+ SET title= 'cards'
+ WHERE title= 'chess';
+ 
+--Change a task due date
+ UPDATE task
+ SET due_date= '2020-06-01'
+ WHERE due_date= '2020-05-29';
+ 
+--Change a task status
+ UPDATE task
+ SET status_id= 2
+ WHERE status_id= 3;
+
+--mark status as done
+UPDATE task
+ SET status_id= 3
+ WHERE status_id= 2;
+
+--Delete from task.
+DELETE task
+ WHERE title = 'cards';
+
+
+PART 2.
+SCHOOL DATABASE.
+/*Create a new database containing the following tables:
+•	Class: with the columns: id, name, begins (date), ends (date)
+•	Student: with the columns: id, name, email, phone, class_id (foreign key)*/
+
+
+CREATE DATABASE schoolreg;
+
+use schoolreg;
+
+CREATE TABLE `CLASS` (
+`class_id` INT(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+`name` VARCHAR (255) NOT NULL,
+`begin_date`  DATETIME,
+`ending_date` DATETIME
+);
+
+CREATE TABLE `STUDENT` (
+`student_id` INT(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+`name` VARCHAR (255) NOT NULL,
+`email` VARCHAR(255) NOT NULL,
+`Phone` NULL,
+FOREIGN KEY `class_id` INT (10)
+);
+
+--Create an index on the name column of the student table.
+
+ALTER TABLE student ADD INDEX idx_name (name);
+
+--Or 
+
+CREATE INDEX idx_name
+ON student (name);
+
+
+/*Adding  a new column to the class table named status which can only have the following values: not-started, ongoing, finished (hint: enumerations).*/
+
+ALTER TABLE
+    `class`
+ADD COLUMN
+    `column_Status` enum(
+        'not started',
+        'ongoing',
+        'finished'
+    );
+
+
+PART3.
+--- Get all the tasks assigned to users whose email ends in @spotify.com
+SELECT *
+FROM task
+LEFT JOIN user 
+ON task.status_id = user.id
+WHERE email LIKE '%@spotify.com';
+
+
+--- Get all the tasks for 'Donald Duck' with status 'Not started'
+--- first we get all Donald Duck’s tasks and his id,.,.His id is 11,.,.
+
+SELECT *
+FROM user_task 
+WHERE user_id = 11;
+SELECT title, status_id 
+FROM task
+WHERE id IN (2, 17, 26, 27, 32);
+
+SELECT title
+FROM task
+INNER JOIN user_task 
+ON task.id = user_task.task_id
+WHERE user_task.user_id(
+SELECT id 
+FROM user
+WHERE name = ‘DONALD DUCK’
+AND status.id =(SELECT id FROM status);
+JOIN task on user.id = task.id;
+);
+
+
+
+
+
+/*Get all the tasks for 'Maryrose Meadows' that were created in september (hint: month(created)=month_number)*/
+--- first know Maryrose’s id,..,.
+SELECT user.id, name
+FROM user;
+
+--- then know how many tasks maryrose has, her id is 6 , we get it from above query. 
+SELECT *
+FROM user_task 
+WHERE user_id = 6;
+
+SELECT *
+FROM user_task 
+WHERE user_id = 6;
+SELECT title, created DATETIME
+FROM task
+WHERE id IN (7, 10, 14, 27);
+
+
+
+---Tasks where created in each month
+
+SELECT COUNT (task)
+FROM task
+ORDER BY month created 
+
+
+Part 4: Creating a database
+/*Your application must include at least one many-to-many relationship and any supporting tables (linking tables) that are needed. 
+The entity relationship diagram must describe what tables you will need, the columns in these tables, 
+which column is the primary key, and the relationships between tables.*/
+ 
+-- ER Diagram is attached in PDF. Format aside.
+
+
+
+
+
