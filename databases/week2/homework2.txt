@@ -53,6 +53,8 @@ SCHOOL DATABASE.
 
 CREATE DATABASE schoolreg;
 
+use schoolreg;
+
 CREATE TABLE `CLASS` (
 `class_id` INT(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY, 
 `name` VARCHAR (255) NOT NULL,
