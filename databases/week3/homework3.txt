@@ -1,0 +1,159 @@
+Use mealsharing;
+
+CREATE TABLE `mealsharing`.`meal` (
+  `id` INT(10) NULL AUTO_INCREMENT,
+  `title` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(255) NOT NULL,
+  `location` VARCHAR(255) NULL,
+  `when` DATETIME NOT NULL,
+  `Max_reservation` INT NULL,
+  `price` DECIMAL(10,2) NULL,
+  `created_date` DATE NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `mealsharing`.`reservation` (
+  `id` INT (10)NOT NULL,
+  `number_of_guests` INT NOT NULL,
+  `meal_id` INT NOT NULL,
+  `created_date` DATE NOT NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `mealsharing`.`review` (
+  `id` (10)INT NOT NULL,
+  `title` VARCHAR(45) NOT NULL,
+  `desciption` TEXT NOT NULL,
+  `meal_id` INT NOT NULL,
+  `stars` INT NULL,
+  `created_date` DATE NOT NULL,
+  PRIMARY KEY (`id`));
+
+ALTER TABLE `mealsharing`.`review` 
+CHANGE COLUMN `stars` `stars` INT NULL ;
+-- know all meal columns
+DESCRIBE meal;
+
+-- know all reservation columns
+DESCRIBE reservation;
+
+-- know all review columns
+DESCRIBE review;
+
+
+
+-- get all meals
+SELECT *
+FROM meal;
+
+-- Add a new meal
+INSERT INTO meal (id, title, description, location, when,
+ Max_reservation, price, created_date)
+VALUES (Default, 'chickmasala', 'chicken with masala n chips', 'copenhagen', 
+'2020-06-06', '85', '109.50', '2020-06-05');
+
+-- get a meal with specific id.
+SELECT title
+FROM meal
+WHERE id = 1; 
+
+-- update a specific meal
+UPDATE meal
+SET title = 'barflychickie'
+WHERE id = 1;
+
+-- delete a specific meal
+DELETE FROM meal
+WHERE id = 2;
+
+-- get all reservations
+SELECT * FROM reservation;
+
+-- add a new reservation
+INSERT INTO reservation (id, number_of_guests, meal_id, created_date)
+VALUES (123, '100', '2', '2020-06-05');
+
+-- get a specific reservation
+SELECT id
+FROM reservation
+WHERE id = 1;
+
+-- update a specific reservation
+UPDATE reservation
+SET id = 456
+WHERE id = 1;
+
+-- delete a specific reservation
+DELETE FROM reservation
+WHERE id = 3;
+
+-- get all reviews 
+SELECT * FROM mealsharing.review;
+
+-- add a new review
+INSERT INTO review (id, title, description, meal_id, stars, created_date)
+VALUES (678, 'toprank', 'best_services_offered', 569, 5, '2020-06-05');
+
+-- get a review with specific id.
+SELECT title
+FROM review
+WHERE id = 1;
+
+-- update a specific review
+UPDATE review
+SET id = 876
+WHERE id = 123;
+
+-- delete a specific review
+DELETE FROM review
+WHERE id = 123;
+
+-- get meal that has their price less than 90
+ SELECT *
+ FROM meal
+ WHERE price < 90
+ ORDER by title;
+
+-- get all meals that have available reservations 
+ SELECT  count(*)
+ FROM meal
+ INNER JOIN reservation
+ ON meal.id = reservation.meal_id
+ WHERE meal.max_reservation > reservation.number_of_guests;
+
+-- select meal title that partially matches rød, grøn med fløde  
+ SELECT title
+ FROM meal
+ WHERE title REGEXP 'rød|grøn|med|fløde';
+
+-- get meals that have been created between two dates
+ SELECT title
+ FROM meal
+ WHERE created_date BETWEEN '2020-05-08' AND '2020-05-09';
+
+
+-- get only specific number of meal, example with price less than 100
+ SELECT *
+ FROM meal
+ WHERE price < 100
+ LIMIT 5;
+
+-- get all meals with good reviews
+ SELECT *
+ FROM meal
+ INNER JOIN review
+ ON meal.id= review.meal_id
+ WHERE stars > 3;
+
+-- get reservation for a specific meal sorted by created_date
+ SELECT *
+ FROM reservation
+ INNER JOIN meal
+ ON reservation.created_date = meal.created_date
+ ORDER BY title;
+
+
+SELECT *,AVG(review.stars)
+FROM meal
+INNER JOIN review
+ON meal.id = review.meal_id
+GROUP BY meal.id
+ORDER BY AVG(review.stars);
