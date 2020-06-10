@@ -1,34 +1,38 @@
 Use mealsharing;
 
-CREATE TABLE `mealsharing`.`meal` (
-  `id` INT(10) NULL AUTO_INCREMENT,
+CREATE TABLE `meal` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY
   `title` VARCHAR(45) NOT NULL,
   `description` VARCHAR(255) NOT NULL,
   `location` VARCHAR(255) NULL,
   `when` DATETIME NOT NULL,
-  `Max_reservation` INT NULL,
-  `price` DECIMAL(10,2) NULL,
-  `created_date` DATE NULL,
-  PRIMARY KEY (`id`));
+  `Max_reservation` INT NOT NULL,
+  `price` DECIMAL(10,2) NOT NULL,
+  `created_date` DATE NOT NULL 
+)ENGINE = InnoDB DEFAULT CHARSET = utf8b4 COLLATE = utf8mb4_unicode_ci;
 
-CREATE TABLE `mealsharing`.`reservation` (
-  `id` INT (10)NOT NULL,
-  `number_of_guests` INT NOT NULL,
+
+
+CREATE TABLE `reservation` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY,
+  `number_of_guests` INT(10) NOT NULL,
   `meal_id` INT NOT NULL,
   `created_date` DATE NOT NULL,
-  PRIMARY KEY (`id`));
+CONSTRAINT `fk_reservation` FOREIGN KEY (`meal_id`) REFERENCES `meal`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  )ENGINE = InnoDB DEFAULT CHARSET = utf8b4 COLLATE = utf8mb4_unicode_ci;
 
-CREATE TABLE `mealsharing`.`review` (
-  `id` (10)INT NOT NULL,
+CREATE TABLE `review` (
+  `id` INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `title` VARCHAR(45) NOT NULL,
-  `desciption` TEXT NOT NULL,
-  `meal_id` INT NOT NULL,
-  `stars` INT NULL,
+  `desciption` TEXT NULL default NULL,
+  `meal_id` INT(10) unsigned NOT NULL,
+  `stars` INT(10) unsigned NOT NULL,
   `created_date` DATE NOT NULL,
-  PRIMARY KEY (`id`));
+  )CONSTRAINT `fk_reservation` FOREIGN KEY (`meal_id`) REFERENCES `meal`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  )ENGINE = InnoDB DEFAULT CHARSET = utf8b4 COLLATE = utf8mb4_unicode_ci;
 
-ALTER TABLE `mealsharing`.`review` 
-CHANGE COLUMN `stars` `stars` INT NULL ;
+
+
 -- know all meal columns
 DESCRIBE meal;
 
@@ -45,13 +49,13 @@ SELECT *
 FROM meal;
 
 -- Add a new meal
-INSERT INTO meal (id, title, description, location, when,
- Max_reservation, price, created_date)
-VALUES (Default, 'chickmasala', 'chicken with masala n chips', 'copenhagen', 
-'2020-06-06', '85', '109.50', '2020-06-05');
+INSERT INTO meal (`id`, `title`, `description`, `location`, `when`,
+ `Max_reservation`, `price`, `created_date`)
+VALUES (689, 'chickmasala', 'chicken with masala n chips', 'copenhagen', 
+'2020-06-06 11:00:00', 85, 110, '2020-06-06');
 
 -- get a meal with specific id.
-SELECT title
+SELECT *
 FROM meal
 WHERE id = 1; 
 
@@ -68,34 +72,35 @@ WHERE id = 2;
 SELECT * FROM reservation;
 
 -- add a new reservation
-INSERT INTO reservation (id, number_of_guests, meal_id, created_date)
-VALUES (123, '100', '2', '2020-06-05');
+INSERT INTO reservation (`id`, `number_of_guests`, `meal_id`, `created_date`)
+VALUES (937, 100, 28, '2020-06-05');
 
 -- get a specific reservation
-SELECT id
+SELECT *
 FROM reservation
-WHERE id = 1;
+WHERE id = 8;
 
 -- update a specific reservation
 UPDATE reservation
 SET id = 456
 WHERE id = 1;
 
+
 -- delete a specific reservation
 DELETE FROM reservation
 WHERE id = 3;
 
 -- get all reviews 
-SELECT * FROM mealsharing.review;
+SELECT * FROM review;
 
 -- add a new review
-INSERT INTO review (id, title, description, meal_id, stars, created_date)
+INSERT INTO review (`id`, `title`, `description`, `meal_id`, `stars`, `created_date`)
 VALUES (678, 'toprank', 'best_services_offered', 569, 5, '2020-06-05');
 
 -- get a review with specific id.
-SELECT title
+SELECT *
 FROM review
-WHERE id = 1;
+WHERE id = 18;
 
 -- update a specific review
 UPDATE review
@@ -113,7 +118,7 @@ WHERE id = 123;
  ORDER by title;
 
 -- get all meals that have available reservations 
- SELECT  count(*)
+ SELECT meal.title, meal.max_reservation, reservation.number_of_guests
  FROM meal
  INNER JOIN reservation
  ON meal.id = reservation.meal_id
@@ -125,7 +130,15 @@ WHERE id = 123;
  WHERE title REGEXP 'rød|grøn|med|fløde';
 
 -- get meals that have been created between two dates
- SELECT title
+  SELECT * 
+FROM meal 
+WHERE created_date > '2011-06-06' and created_date < '2020-06-06'
+order by created_date;
+
+
+
+
+SELECT *
  FROM meal
  WHERE created_date BETWEEN '2020-05-08' AND '2020-05-09';
 
@@ -137,23 +150,26 @@ WHERE id = 123;
  LIMIT 5;
 
 -- get all meals with good reviews
- SELECT *
- FROM meal
- INNER JOIN review
- ON meal.id= review.meal_id
- WHERE stars > 3;
+ 
+SELECT meal.title , review.stars 
+FROM meal
+JOIN review ON (review.meal_id = meal.id )
+where stars >= 3;
+
 
 -- get reservation for a specific meal sorted by created_date
- SELECT *
- FROM reservation
- INNER JOIN meal
- ON reservation.created_date = meal.created_date
- ORDER BY title;
+ 
+SELECT meal.title ,reservation.id ,reservation.created_date 
+FROM reservation
+JOIN meal ON (meal.id = reservation.meal_id)
+WHERE meal.id = 77
+ORDER BY reservation.created_date;
 
 
-SELECT *,AVG(review.stars)
+
+SELECT meal.id, meal.title, AVG(review.stars)
 FROM meal
 INNER JOIN review
 ON meal.id = review.meal_id
-GROUP BY meal.id
+GROUP BY meal.id, meal.title
 ORDER BY AVG(review.stars);
