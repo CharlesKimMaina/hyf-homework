@@ -3,8 +3,8 @@ Use mealsharing;
 CREATE TABLE `meal` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY
   `title` VARCHAR(45) NOT NULL,
-  `description` VARCHAR(255) NOT NULL,
-  `location` VARCHAR(255) NULL,
+  `description` VARCHAR(45) NOT NULL,
+  `location` VARCHAR(45) NULL,
   `when` DATETIME NOT NULL,
   `Max_reservation` INT NOT NULL,
   `price` DECIMAL(10,2) NOT NULL,
@@ -49,9 +49,9 @@ SELECT *
 FROM meal;
 
 -- Add a new meal
-INSERT INTO meal (`id`, `title`, `description`, `location`, `when`,
+INSERT INTO meal (`title`, `description`, `location`, `when`,
  `Max_reservation`, `price`, `created_date`)
-VALUES (689, 'chickmasala', 'chicken with masala n chips', 'copenhagen', 
+VALUES ('chickmasala', 'chicken with masala n chips', 'copenhagen', 
 '2020-06-06 11:00:00', 85, 110, '2020-06-06');
 
 -- get a meal with specific id.
