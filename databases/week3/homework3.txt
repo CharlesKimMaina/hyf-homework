@@ -24,7 +24,7 @@ CONSTRAINT `fk_reservation` FOREIGN KEY (`meal_id`) REFERENCES `meal`(`id`) ON D
 CREATE TABLE `review` (
   `id` INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `title` VARCHAR(45) NOT NULL,
-  `desciption` TEXT NULL default NULL,
+  `description` VARCHAR(45),
   `meal_id` INT(10) unsigned NOT NULL,
   `stars` INT(10) unsigned NOT NULL,
   `created_date` DATE NOT NULL,
@@ -49,20 +49,20 @@ SELECT *
 FROM meal;
 
 -- Add a new meal
-INSERT INTO meal (`title`, `description`, `location`, `when`,
- `Max_reservation`, `price`, `created_date`)
-VALUES ('chickmasala', 'chicken with masala n chips', 'copenhagen', 
-'2020-06-06 11:00:00', 85, 110, '2020-06-06');
+INSERT INTO meal (title, description, location, `when`, Max_reservation, price, created_date) 
+VALUES ('barflychikie', 'go rostie with cripsy', 'glostrup', '2020-06-08', 17, 118, '2020-06-07');
+
 
 -- get a meal with specific id.
 SELECT *
 FROM meal
-WHERE id = 1; 
+WHERE id = 5; 
 
 -- update a specific meal
-UPDATE meal
-SET title = 'barflychickie'
-WHERE id = 1;
+UPDATE meal 
+SET price = price + 12, 
+title = 'barflychickie : TONIGHTS UNIQUE' WHERE id = 8;
+
 
 -- delete a specific meal
 DELETE FROM meal
@@ -72,8 +72,8 @@ WHERE id = 2;
 SELECT * FROM reservation;
 
 -- add a new reservation
-INSERT INTO reservation (`id`, `number_of_guests`, `meal_id`, `created_date`)
-VALUES (937, 100, 28, '2020-06-05');
+INSERT INTO reservation (number_of_guests, meal_id, created_date) 
+VALUES (8, 6,'2020-04-08');
 
 -- get a specific reservation
 SELECT *
@@ -81,21 +81,21 @@ FROM reservation
 WHERE id = 8;
 
 -- update a specific reservation
-UPDATE reservation
-SET id = 456
-WHERE id = 1;
+UPDATE reservation 
+SET number_of_guests = 8 WHERE id = 3;
+
 
 
 -- delete a specific reservation
 DELETE FROM reservation
-WHERE id = 3;
+WHERE id = 18;
 
 -- get all reviews 
 SELECT * FROM review;
 
 -- add a new review
-INSERT INTO review (`id`, `title`, `description`, `meal_id`, `stars`, `created_date`)
-VALUES (678, 'toprank', 'best_services_offered', 569, 5, '2020-06-05');
+INSERT INTO review (`title`, `description`, `meal_id`, `stars`, `created_date`)
+VALUES ('toprank', 'rostie beefbase', 569, 5, '2020-06-05');
 
 -- get a review with specific id.
 SELECT *
@@ -103,6 +103,7 @@ FROM review
 WHERE id = 18;
 
 -- update a specific review
+
 UPDATE review
 SET id = 876
 WHERE id = 123;
@@ -118,6 +119,11 @@ WHERE id = 123;
  ORDER by title;
 
 -- get all meals that have available reservations 
+SELECT meal.*,sum(reservation.number_of_guests) Total 
+FROM meal INNER JOIN reservation on meal.id = reservation.meal_id 
+GROUP BY meal.id HAVING Total < Max_reservation;
+
+-- select meal and show their reservations vs number of guests 
  SELECT meal.title, meal.max_reservation, reservation.number_of_guests
  FROM meal
  INNER JOIN reservation
@@ -136,18 +142,8 @@ WHERE created_date > '2011-06-06' and created_date < '2020-06-06'
 order by created_date;
 
 
-
-
-SELECT *
- FROM meal
- WHERE created_date BETWEEN '2020-05-08' AND '2020-05-09';
-
-
--- get only specific number of meal, example with price less than 100
- SELECT *
- FROM meal
- WHERE price < 100
- LIMIT 5;
+-- Get only specific number of meals fx return only 5 meals
+SELECT * FROM meal LIMIT 5;
 
 -- get all meals with good reviews
  
@@ -157,19 +153,27 @@ JOIN review ON (review.meal_id = meal.id )
 where stars >= 3;
 
 
--- get reservation for a specific meal sorted by created_date
- 
-SELECT meal.title ,reservation.id ,reservation.created_date 
-FROM reservation
-JOIN meal ON (meal.id = reservation.meal_id)
-WHERE meal.id = 77
-ORDER BY reservation.created_date;
 
-
-
-SELECT meal.id, meal.title, AVG(review.stars)
+-- Get all the meals that have good reviews(AVG of over 3 stars)
+SELECT meal.*
 FROM meal
-INNER JOIN review
-ON meal.id = review.meal_id
-GROUP BY meal.id, meal.title
-ORDER BY AVG(review.stars);
+INNER JOIN review ON meal.id = review.meal_id
+GROUP BY meal.id
+HAVING AVG(review.stars) > 3
+
+
+-- Get reservations for a specific meal sorted by created_date
+SELECT reservation.* FROM reservation
+WHERE reservation.meal_id = 14
+ORDER BY reservation.created_date DESC;
+ 
+
+-- Sort all meals by average number of stars in the reviews
+SELECT meal.*, AVG(review.stars) FROM meal
+INNER JOIN review ON meal.id = review.meal_id
+GROUP BY meal.id
+ORDER BY AVG(review.stars) DESC;
+
+
+
+
