@@ -1,35 +1,33 @@
 Use mealsharing;
 
 CREATE TABLE `meal` (
-  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY
-  `title` VARCHAR(45) NOT NULL,
-  `description` VARCHAR(45) NOT NULL,
-  `location` VARCHAR(45) NULL,
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `title` VARCHAR(255) NOT NULL,
+  `description` TEXT NOT NULL,
+  `location` VARCHAR(255) NOT NULL,
   `when` DATETIME NOT NULL,
-  `Max_reservation` INT NOT NULL,
+  `max_reservation` INT NOT NULL,
   `price` DECIMAL(10,2) NOT NULL,
   `created_date` DATE NOT NULL 
-)ENGINE = InnoDB DEFAULT CHARSET = utf8b4 COLLATE = utf8mb4_unicode_ci;
-
-
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 
 CREATE TABLE `reservation` (
-  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY,
-  `number_of_guests` INT(10) NOT NULL,
-  `meal_id` INT NOT NULL,
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `number_of_guests` INT UNSIGNED NOT NULL,
+  `meal_id` INT UNSIGNED NOT NULL,
   `created_date` DATE NOT NULL,
-CONSTRAINT `fk_reservation` FOREIGN KEY (`meal_id`) REFERENCES `meal`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
-  )ENGINE = InnoDB DEFAULT CHARSET = utf8b4 COLLATE = utf8mb4_unicode_ci;
+  CONSTRAINT `fk_reservation_meal` FOREIGN KEY (`meal_id`) REFERENCES `meal`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 
 CREATE TABLE `review` (
-  `id` INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `title` VARCHAR(45) NOT NULL,
-  `description` VARCHAR(45),
-  `meal_id` INT(10) unsigned NOT NULL,
-  `stars` INT(10) unsigned NOT NULL,
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `title` VARCHAR(255) NOT NULL,
+  `description` TEXT NOT NULL,
+  `meal_id` INT UNSIGNED NOT NULL,
+  `stars` INT UNSIGNED NOT NULL,
   `created_date` DATE NOT NULL,
-  )CONSTRAINT `fk_reservation` FOREIGN KEY (`meal_id`) REFERENCES `meal`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
-  )ENGINE = InnoDB DEFAULT CHARSET = utf8b4 COLLATE = utf8mb4_unicode_ci;
+  CONSTRAINT `fk_review_meal` FOREIGN KEY (`meal_id`) REFERENCES `meal`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 
 
 
@@ -173,7 +171,6 @@ SELECT meal.*, AVG(review.stars) FROM meal
 INNER JOIN review ON meal.id = review.meal_id
 GROUP BY meal.id
 ORDER BY AVG(review.stars) DESC;
-
 
 
 
