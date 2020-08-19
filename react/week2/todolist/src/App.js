@@ -52,14 +52,14 @@ class App extends Component {
     this.setState({ todos: updatedTodo });
   };
 
-  deleteTodoItem = (event) => {
-    const index = event.target.dataset.index;
-    this.setState((state) => {
-      const todoWithDeleted = [...state.todos];
-      todoWithDeleted.splice(index, 1);
-      return { todos: todoWithDeleted };
-    });
-  };
+    deleteTodoItem = (id) => {
+        const newTodos = this.state.todos.filter(todo => {
+            return todo.id !== id;
+        });
+        const newTodoList = this.setState({
+            todos: newTodos,
+        });
+    };
 }
 
 export default App;
