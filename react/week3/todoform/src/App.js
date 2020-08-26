@@ -8,7 +8,7 @@ class App extends Component {
       inputValue: "",
       date: "",
       time: 0,
-      todolist: [],
+      todoList: [],
     };
   }
   render() {
