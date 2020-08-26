@@ -5,7 +5,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      input: "",
+      inputValue: "",
       date: "",
       time: 0,
       todolist: [],
