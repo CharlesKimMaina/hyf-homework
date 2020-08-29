@@ -1,32 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <button id="btn1">Button1</button>
     <button id="btn2">Button2</button>
     <button id="btn3">Button3</button>
-    <script>
 
-        const  timeOut= setTimeOut(()=>("This is delayed for three seconds"),
-        3000)
-let i = 0
-
-const buttonCounter = function(event){
-    console.log(i++)
-}
-
-const buttonCountDown = function(event){
-    console.log(i--)
-}
-
-document.getElementById("btn1").addEventListener("click",buttonCounter)
-document.getElementById("btn2").addEventListener("click",buttonCountDown)
-document.getElementById("btn3").addEventListener("click",setTimeOut 3000)
-console.log("btn1","btn2", "btn3")
-    </script>
-</body>
+    <script src="buttonApp.js"></script>
+  </body>
 </html>

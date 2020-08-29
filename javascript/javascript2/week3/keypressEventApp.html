@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
+    <button id="btn9">click here</button>
 
-    <button id="btn9"><h1>click here</h1></button>
-    
     <script>
-const button = document.getElementById("btn9");
-button.addEventListener("click", function() {
-  setTimeout(() => {
-    console.log("run after 2 second");
-  }, 2500);
-});
-
-
+      const button = document.getElementById("btn9");
+      button.addEventListener("click", function () {
+        setTimeout(() => {
+          console.log("run after 3 second");
+        }, 3000);
+      });
     </script>
-</body>
+  </body>
 </html>
