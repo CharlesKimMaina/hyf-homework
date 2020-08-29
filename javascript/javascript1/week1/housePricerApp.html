@@ -1,31 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <script>
-
-        //HouseyPrice (A House price estimator)
-
-
-
-function costOfHouse() {
-  let houseWide = prompt("What is the width of your house?");
-  let houseDeep = prompt("What is the depth of your house?");
-  let houseHigh = prompt("What is the height of your house?");
-  let gardenSizeInM2 = prompt("What is your garden size?");
-  let volumeInMeters = houseWide * houseDeep * houseHigh;
-  let costOfHouse = volumeInMeters * 2.5 * 1000 + gardenSizeInM2 * 300;
-  alert(costOfHouse);
-}
-costOfHouse();
-
-/* The formula above prompts users to supply their housewidth, housedepth, househeight and garden size, it then
-automatically calculates the cost of their house. After running the formular on browser; Peter is overpaying. The real value of his house is 2,030,000and
-Julie is underpaying; the real cost of her house is 1,121,000 */
-    </script>
-</body>
+  </head>
+  <body>
+    <script src="housePricerApp.js"></script>
+  </body>
 </html>
