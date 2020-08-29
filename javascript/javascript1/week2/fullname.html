@@ -6,31 +6,6 @@
     <title>Document</title>
   </head>
   <body>
-    <script>
-      /*The Function getFullName has 3 parameters.
-      the 1st 2 parameters will compulsorily appear 
-      on the flight ticket of the customer.
-      These 2 parameters are firstName and surname.
-      I assign firstname to fullname1 and surname to
-      fullname2. The 3rd parameter is booleon dependent.
-      useFormalName will be true if the customer checks
-      to be adressed formally. If he does so, the name
-      "Lord" will appear together with both fullname1
-      and fullname2 on the flight ticket. If the customer
-      does not check, only fullname1 and fullname2 
-      appears on the flight ticket. */
-
-      function getFullName(firstName, lastName, useFormalName) {
-        let fullName1 = firstName;
-        let fullName2 = lastName;
-
-        if ((useFormalName = false)) {
-          return "Lord "  + firstName + " " + lastName;
-        } else {
-          return firstName + " " + lastName;
-        }
-      }
-      console.log(getFullName("Charles", "Maina"));
-    </script>
+    <script src="fullname.js"></script>
   </body>
 </html>
