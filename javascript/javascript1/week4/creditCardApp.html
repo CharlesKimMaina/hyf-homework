@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-function formatCreditCardNumber (digits) {
-  const newDigits = "(" + digits.match(/(\d{4})/g).join(" ") + ")"; //(9753 1864 2359)
-return newDigits
-};
+      function formatCreditCardNumber() {
+        const digits = "(975318642359)";
+        const newDigits = "(" + digits.match(/(\d{4})/g).join(" ") + ")"; //(9753 1864 2359)
+        console.log(newDigits);
+      }
 
-const formattedCreditCardObject = formatCreditCardNumber(975318642359);
-console.log(formattedCreditCardObject);
-
+      const formattedCreditCardObject = formatCreditCardNumber(975318642359);
+      console.log(formattedCreditCardObject);
     </script>
-</body>
+  </body>
 </html>
