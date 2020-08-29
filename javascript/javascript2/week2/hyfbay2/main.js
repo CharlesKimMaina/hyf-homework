@@ -1,22 +1,24 @@
-console.log('Script loaded');
+console.log("Script loaded");
 
 const products = getAvailableProducts();
-const productsUl = document.querySelector('section.products ul');
+const productsUl = document.querySelector("section.products ul");
 console.log(productsUl);
 
 /*i have given the inputtype some id called searchButton.
 which i will to acess it from JS*/
 
-const searchButton = document.getElementById("searchButton")
+const searchButton = document.getElementById("searchButton");
 
 function renderProducts(products) {
-    products.forEach(product => {
-        const li = document.createElement('li');
+  products.forEach((product) => {
+    const li = document.createElement("li");
 
-        let shipsToHTML = '';
-        product.shipsTo.forEach(country => shipsToHTML += `<li>${country}</li>`);
+    let shipsToHTML = "";
+    product.shipsTo.forEach(
+      (country) => (shipsToHTML += `<li>${country}</li>`)
+    );
 
-        li.innerHTML = `
+    li.innerHTML = `
             <ul>
                 <li>${product.name}</li>
                 <li>${product.price}</li>
@@ -24,8 +26,8 @@ function renderProducts(products) {
                 <ul class="ships-to">${shipsToHTML}</ul>
             </ul>
         `;
-        productsUl.appendChild(li);
-    });
+    productsUl.appendChild(li);
+  });
 }
 
 renderProducts(products);
@@ -40,30 +42,16 @@ real product, hence productNameTyped.length or searchButton
 value must be higher than 0. The second condition to 
 checks the keycode of keypress event, which is 13. */
 
-searchButton.addEventListener("keypress", function() {
-     if (searchButton.value.length > 0 && event.keyCode === 13) {
-        console.log("eventCount");
-     }
-    });
-        
-        /*I will repair the code below later!
-        const inputValue = searchButton.value;
-          if (inputValue){
-              const searchedProduct = products.filter((product)=>{
-              Return product.name;
-          });
-          renderedSearchedProduct(searchedProduct);        
-      }
-      console.log(inputValue);
-      console.log("keypress");
-    }
-    });*/
-    
-    function renderSearchedProduct(){
-        let p = document.createElement("p");
-        let typedWord = searchButton.value;
-        p.innerHTML = typedWord;
-        searchedProduct.appendChild(p);
-        console.log(p);
-    }
-    
+searchButton.addEventListener("keypress", function () {
+  if (searchButton.value.length > 0 && event.keyCode === 13) {
+    console.log("eventCount");
+  }
+});
+
+function renderSearchedProduct() {
+  let p = document.createElement("p");
+  let typedWord = searchButton.value;
+  p.innerHTML = typedWord;
+  searchedProduct.appendChild(p);
+  console.log(p);
+}
