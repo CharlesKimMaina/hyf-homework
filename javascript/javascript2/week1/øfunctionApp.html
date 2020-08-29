@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-       const danishWords = ["billie", "plante", "kaffe", "bog", "ø", "planetarium"];
-
-function getShortest() {
-  let shortest = danishWords.sort((a, b) => a.length - b.length)[0];
-  return shortest;
-}
-
-console.log(getShortest());
-
-
-
+      const danishWords = [
+        "billie",
+        "plante",
+        "kaffe",
+        "bog",
+        "ø",
+        "planetarium",
+      ];
+      function getShortest() {
+        let shortest = danishWords.sort((a, b) => a.length - b.length)[0];
+        return shortest;
+      }
+      console.log(getShortest());
     </script>
-</body>
+  </body>
 </html>

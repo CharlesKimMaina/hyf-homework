@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-  <p>This is my body text.</p>
+  </head>
+  <body>
+    <p>This is my body text.</p>
+    <button class="btn"></button>
     <script>
-
-let body = document.getElementById('body')
-let body = document.querySelector ("body").addEventListener('changecolor', function(event) {
-    return (changeColorToBlack)
-    console.log(event);
-    body.style.backgroundColor = 'black';
-});  
+      let body = document
+        .querySelector(".btn")
+        .addEventListener("onclick", function (event) {
+          return (body.style.backgroundColor = "blue");
+        });
     </script>
-</body>
+  </body>
 </html>
