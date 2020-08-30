@@ -1,0 +1,26 @@
+#btn {
+  height: 50px;
+  border-radius: 7px;
+  width: 180px;
+  background-color: rgb(7, 39, 107);
+  color: white;
+}
+#container-input {
+  text-align: center;
+}
+
+#input-textbox {
+  height: 40px;
+  border-radius: 5px;
+  margin-bottom: 1%;
+  margin-top: 1%;
+  width: 200px;
+}
+
+#input-number {
+  height: 40px;
+  border-radius: 5px;
+  margin-bottom: 1%;
+  margin-top: 1%;
+  width: 200px;
+}

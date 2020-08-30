@@ -1,0 +1,29 @@
+.input {
+  text-align: center;
+}
+input[type="text"] {
+  height: 70px;
+  width: 500px;
+  background-color: #8c1111;
+  font-family: "Nunito", sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 30px;
+}
+
+input[type="submit"] {
+  height: 40px;
+  width: 130px;
+  background-color: #8c1111;
+  font-family: "Nunito", sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  border: none;
+  border-radius: 4px;
+}
+
+.display {
+  text-align: center;
+}

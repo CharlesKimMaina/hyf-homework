@@ -1,35 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <button id="button">Click me for images</button>
-    <img src="">
+    <img src="" />
 
     <script>
-var api = "http://api.giphy.com/vi/gifs/search?";
-var apiKey = "&api_key=dc6zaTOxFJmzC";
-var query = "&q=rainbow";
+      const api = "http://api.giphy.com/vi/gifs/search?";
+      const apiKey = "&api_key=dc6zaTOxFJmzC";
+      const query = "&q=rainbow";
 
-var button = document.getElementById("button")
+      const button = document.getElementById("button");
 
-function setup(){
-    noCanvas();
-    var url = api + apiKey + query;
-    LoadJSON(url,gotData);
-}
+      function setup() {
+        noCanvas();
+        const url = api + apiKey + query;
+        LoadJSON(url, gotData);
+      }
 
-function gotData(giphy){
-    for (let i = 0; i < giphy.data.length; i++) {
-        createImg(giphy.data[i].images.original.url);
-    }
-     button.addEventListener("click", gotData).innerHTML = giphy;
-}
-
+      function gotData(giphy) {
+        for (let i = 0; i < giphy.data.length; i++) {
+          createImg(giphy.data[i].images.original.url);
+        }
+        button.addEventListener("click", gotData).innerHTML = giphy;
+      }
     </script>
-</body>
+  </body>
 </html>
