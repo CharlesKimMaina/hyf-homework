@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 export default function App() {
-  const [users, setusers] = useState([]);
+  
   const [searchTerm, setsearchTerm] = useState("");
   const [searchresult, setSearchResult] = useState([]);
   //users is the array of github profiles that we get from API. setUsers is the function that updates the users.
