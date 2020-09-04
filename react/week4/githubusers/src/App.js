@@ -17,7 +17,7 @@ export default function App() {
     }
   }, [searchTerm]);
   function handleInputChange(event) {
-    setsearchTerm(event.target.value);
+    setSearchTerm(event.target.value);
   }
   //setsearchTerm is the function that updates the searchTerm in this handleInputChange function.
 
