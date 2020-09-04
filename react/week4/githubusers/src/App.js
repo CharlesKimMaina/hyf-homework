@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 export default function App() {
   
-  const [searchTerm, setsearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
   const [searchresult, setSearchResult] = useState([]);
   //users is the array of github profiles that we get from API. setUsers is the function that updates the users.
   //searchTerm is the github users name(s) which the searcher will type in the input box.
