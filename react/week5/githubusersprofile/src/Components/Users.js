@@ -13,8 +13,7 @@ export default function Users() {
   and setError with error message "The user you are searching is not found". */
 
   useEffect(() => {
-    if (!userId) return;
-
+    if (userId) {
     fetch(`https://api.github.com/search/users?q=${userId}`)
       .then((res) => res.json())
       .then((res) => {
