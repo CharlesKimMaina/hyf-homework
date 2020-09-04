@@ -13,7 +13,7 @@ export function Profile({ user }) {
 
   useEffect(() => {
     if (user && user.id) return; //if there is user and has user.id, then fetch his/her details from github API.
-
+if (userName) {
     fetch(`https://api.github.com/users/${userName}`)
       .then((res) => res.json())
       .then((u) => setLoadedUser(u))
