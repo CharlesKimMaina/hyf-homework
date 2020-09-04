@@ -23,7 +23,7 @@ export default function Users() {
       .catch((error) => setError(error.message));
   }, [userId]);
 
-  if (!userId) return "The user you are searching is not found";
+  if (!userId) return "Type a name in the search input";
   if (error) return <p>{error}</p>;
   if (userId && users.length === 0)
     return "The user you are searching is not found";
