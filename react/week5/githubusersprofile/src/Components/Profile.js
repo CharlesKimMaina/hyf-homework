@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./Profile.css";
 
-export function Profile({ user }) {
+export function Profile() {
   const [loadedUser, setLoadedUser] = useState(user);
   const { userName } = useParams();
 
