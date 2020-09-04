@@ -39,7 +39,9 @@ export default function App() {
       <p>
         {searchresult.map((item, i) => (
           <li key={i}>
-            <a href="">{item}</a>
+            <a href={item.html_url} target="_blank" rel="noopener noreferrer">
+              {item.login}
+            </a>
           </li>
         ))}
       </p>
