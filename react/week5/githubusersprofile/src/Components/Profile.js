@@ -35,7 +35,7 @@ if (userName) {
   return (
     <div className="profile">
       <div>
-        <img src={avatar_url} alt="" />
+        <img src={avatar_url} alt="avatar picture" />
         <p> {name} </p>
         <p className="login">{login}</p>
         <p className="follower">
