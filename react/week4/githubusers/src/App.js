@@ -9,18 +9,13 @@ export default function App() {
   //setsearchTerm is the function that updates the searchTerm.
   //setsearchresults returns the updated searchresult.
 
-  useEffect(() => {
-    fetch(`https://api.github.com/users`)
-      .then((response) => response.json())
-      .then((data) =>
-        setusers(
-          data.map((item, i) => {
-            return item.login;
-          })
-        )
-      );
-  }, []);
-
+    useEffect(() => {
+    if (searchTerm !== "") {
+      fetch(`https://api.github.com/search/users?q=${searchTerm}`)
+        .then(response => response.json())
+        .then(data => setSearchResult(data.items));
+    }
+  }, [searchTerm]);
   function handleInputChange(event) {
     setsearchTerm(event.target.value);
   }
