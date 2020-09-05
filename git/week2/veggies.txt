@@ -1,5 +1,8 @@
 mangos.
 oranges.
-coconut.
+lemon
 apple.
 pear.
+berries.
+watermelon.
+strawberry
