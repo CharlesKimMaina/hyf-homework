@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        function jokeCreator(shouldTellFunnyJoke, logFunnyJoke, logBadJoke {
-  if ((shouldTellFunnyJoke = true)) {
-    return logFunnyJoke();
-  } else {
-    return logBadJoke();
-  }
-}
+      const logFunnyJoke = function () {
+        // creating function logFunnyJoke as a variable
+        console.log("It was funny joke");
+      };
 
-jokeCreator(true, (funnyJoke) => {console.log("very funny");
-}, (badJoke) => {console.log("very bad joke");
-});
+      const logBadJoke = function () {
+        console.log("It was not funny joke");
+      };
 
+      function jokeCreator(shouldTellFunnyJoke, logFunnyJoke, logBadJoke) {
+        if (shouldTellFunnyJoke === true) {
+          return logFunnyJoke();
+        } else if (shouldTellFunnyJoke === false) {
+          return logBadJoke();
+        }
+      }
+      jokeCreator(false, logFunnyJoke, logBadJoke); //
+      jokeCreator(true, logFunnyJoke, logFunnyJoke); //
     </script>
-</body>
+  </body>
 </html>

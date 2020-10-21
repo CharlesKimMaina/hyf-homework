@@ -1,20 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
+    <button class="dbl">double click me</button>
     <script>
-/*Check if we have double clicked on the page. A double click is defined by two clicks within 0.5 seconds. If a double click has been detected, 
-log out the text: "double click!"*/
+      /*Check if we have double clicked on the page. A double click is defined by two clicks within 0.5 seconds.
+      If a double click has been detected, log out the text: "double click!"*/
 
+      let doubleClicked = false;
+      let oneClicked = 0;
 
-       window.addEventListener('dblclick', event => {
+      const listenForDoubleClick = function (event) {
+        if (event) {
+          oneClicked++;
+          if (oneClicked >= 2) doubleClicked = true;
+        }
 
-console.log('dblclick') 
+        setTimeout(() => {
+          doubleClicked = false;
+        }, 500);
 
+        if (doubleClicked) {
+          console.log(
+            "You have Double clicked the button within 0.5 seconds, cheers!"
+          );
+        }
+      };
+
+      document.addEventListener("click", listenForDoubleClick);
     </script>
-</body>
+  </body>
 </html>
