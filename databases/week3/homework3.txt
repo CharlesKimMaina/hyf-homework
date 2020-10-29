@@ -1,0 +1,180 @@
+Use mealsharing;
+
+CREATE TABLE `meals` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY
+  `title` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(45) NOT NULL,
+  `location` VARCHAR(45) NULL,
+  `when` DATETIME NOT NULL,
+  `Max_reservation` INT (10) NOT NULL,
+  `price` DECIMAL(10,2) NOT NULL,
+  `created_date` DATE NOT NULL 
+)ENGINE = InnoDB DEFAULT CHARSET = utf8b4 COLLATE = utf8mb4_unicode_ci;
+
+
+
+CREATE TABLE `reservations` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY,
+  `number_of_guests` INT(10) NOT NULL,
+  `meal_id` INT (10) NOT NULL,
+  `created_date` DATE NOT NULL,
+);
+
+CREATE TABLE `reviews` (
+  `id` INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `title` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(45),
+  `meal_id` INT(10) unsigned NOT NULL,
+  `stars` INT(10) unsigned NOT NULL,
+  `created_date` DATE NOT NULL,
+  );
+  
+  
+-- know all meal columns
+DESCRIBE meals;
+
+-- know all reservation columns
+DESCRIBE reservations;
+
+-- know all review columns
+DESCRIBE reviews;
+
+
+
+-- get all meals
+SELECT *
+FROM meals;
+
+-- Add a new meal
+INSERT INTO meals (title, description, location, `when`, Max_reservation, price, created_date) 
+VALUES ('barflychikie', 'go rostie with cripsy', 'glostrup', '2020-06-08', 17, 118, '2020-06-07');
+
+
+-- get a meal with specific id.
+SELECT *
+FROM meals
+WHERE id = 5; 
+
+-- update a specific meal
+UPDATE meals 
+SET price = price + 12, 
+title = 'barflychickie : TONIGHTS UNIQUE' WHERE id = 8;
+
+
+-- delete a specific meal
+DELETE FROM meals
+WHERE id = 2;
+
+-- get all reservations
+SELECT * FROM reservations;
+
+-- add a new reservation
+INSERT INTO reservations (`number_of_guests`, `meal_id`, `created_date`, `name`, `phonenumber`, `email`)
+VALUES (8, 6, '2020-10-29', 'Rita kim', 56976242, 'rt@gmail.com');
+
+
+-- get a specific reservation
+SELECT *
+FROM reservations
+WHERE id = 8;
+
+-- update a specific reservation
+UPDATE reservations 
+SET number_of_guests = 8 WHERE id = 3;
+
+
+
+-- delete a specific reservation
+DELETE FROM reservations
+WHERE id = 18;
+
+-- get all reviews 
+SELECT * FROM reviews;
+
+-- add a new review
+INSERT INTO reviews (`title`, `description`, `meal_id`, `stars`, `created_date`)
+VALUES ('toprank', 'rostie beefbase', 569, 5, '2020-06-05');
+
+-- get a review with specific id.
+SELECT *
+FROM reviews
+WHERE id = 18;
+
+-- update a specific review
+
+UPDATE review
+SET id = 876
+WHERE id = 123;
+
+-- delete a specific review
+DELETE FROM reviews
+WHERE id = 123;
+
+-- get meal that has their price less than 90
+ SELECT *
+ FROM meals
+ WHERE price < 90
+ ORDER by title;
+
+-- get all meals that have available reservations 
+SELECT meals.*,sum(reservations.number_of_guests) Total 
+FROM meals INNER JOIN reservations on meals.id = reservations.meal_id 
+GROUP BY meals.id HAVING Total < Max_reservation;
+
+
+-- select meal and show their reservations vs number of guests 
+SELECT meals.title, meals.max_reservation, reservations.number_of_guests
+ FROM meals
+ INNER JOIN reservations
+ ON meals.id = reservations.meal_id
+ WHERE meals.max_reservation > reservations.number_of_guests;
+
+
+ -- select meal title that partially matches rød, grøn med fløde  
+ SELECT title
+ FROM meals
+ WHERE title REGEXP 'rød|grøn|med|fløde';
+
+-- get meals that have been created between two dates
+  SELECT * 
+FROM meals 
+WHERE created_date > '2011-06-06' and created_date < '2020-10-10'
+order by created_date;
+
+
+-- Get only specific number of meals fx return only 5 meals
+SELECT * FROM meals LIMIT 5;
+
+-- Get all meals with good reviews (AVG of over 3 stars)
+
+SELECT meals.title , reviews.stars 
+FROM meals
+JOIN reviews ON (reviews.meal_id = meals.id )
+where stars >= 3;
+ 
+
+-- Get all the meals titles, descriptions, location and price of all meals that have good reviews
+SELECT meals.*
+FROM meals
+INNER JOIN reviews ON meal.id = reviews.meal_id
+GROUP BY meal.id
+HAVING AVG(reviews.stars) >= 3
+
+
+-- Get reservations for a specific meal sorted by created_date
+SELECT reservations.* FROM reservations
+WHERE reservations.meal_id = 14
+ORDER BY reservations.created_date DESC;
+ 
+
+-- Sort all meals by average number of stars in the reviews
+SELECT meals.*, AVG(reviews.stars) FROM meals
+INNER JOIN reviews ON meals.id = reviews.meal_id
+GROUP BY meals.id
+ORDER BY AVG(reviews.stars) DESC;
+
+
+
+
+
+
