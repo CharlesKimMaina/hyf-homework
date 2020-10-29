@@ -1,12 +1,19 @@
 const express = require("express");
 const meals = require("./data/meals.json");
 const reservations = require("./data/reservations.json");
+const reviews = require("./data/reviews.json");
 
 const app = express();
 
-app.get("/meals", (req, res)=>{
-    res.json(meals);
+app.get("/", async (req, res) => {
+    res.json("Meal Sharing Web App");
 });
+
+app.get("/meals", async (req, res) => {
+
+    res.json(module.exports = {meals,reviews});
+}); 
+
 
 app.get("/reservations", (req, res)=>{
     res.json(reservations);
@@ -39,9 +46,6 @@ app.get("/reservations", (req, res)=>{
 
 app.get("/reviews", (req, res)=>{
     res.json(reviews);
-
-const port = process.env.PORT || 3000;
-
-app.listen(port, () => {
-    console.log(`Listening on port ${port}...`);
 });
+
+module.exports = app; 

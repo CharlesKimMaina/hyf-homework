@@ -2,11 +2,11 @@
   "name": "node7",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/backend/index.js",
-    "dev": "nodemon src/backend/index.js"
+    "start": "node src/backend/server.js",
+    "dev": "nodemon src/backend/server.js"
   },
   "author": "",
   "license": "ISC",
