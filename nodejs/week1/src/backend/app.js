@@ -6,46 +6,46 @@ const reviews = require("./data/reviews.json");
 const app = express();
 
 app.get("/", async (req, res) => {
-    res.json("Meal Sharing Web App");
+    res.send("Meal Sharing Web App");
 });
 
 app.get("/meals", async (req, res) => {
 
-    res.json(module.exports = {meals,reviews});
+    res.send(module.exports = {meals,reviews});
 }); 
 
 
 app.get("/reservations", (req, res)=>{
-    res.json(reservations);
+    res.send(reservations);
 });
 
 app.get("/cheap-meals", (req, res)=>{
     cheapMeals = meals.filter((cheapmeal)=>{
-        return cheapmeal.price < 65;
+        return cheapmeal.price < 80;
     });
-    res.json(cheapMeals);
+    res.send(cheapMeals);
 });
 
 app.get("/large-meals", (req, res)=>{
     largeMeals = meals.filter((largermeal)=>{
-        return largermeal.maxNumberOfGuests>7;
+        return largermeal.maxNumberOfGuests>8;
     });
-    res.json(largeMeals)
+    res.send(largeMeals)
 });
 
 app.get("/meals", (req, res)=>{
-    const randommeal = meals[Math.floor(Math.random() * meals.length)];
-    res.json(randommeal);
+    const randomMeal = meals[Math.floor(Math.random() * meals.length)];
+    res.send(randomMeal);
 });
 
 app.get("/reservations", (req, res)=>{
     const randomReservation = 
     reservations[Math.floor(Math.random() * reservations.length)];
-    res.json(randomReservation);
+    res.send(randomReservation);
 });
 
 app.get("/reviews", (req, res)=>{
-    res.json(reviews);
+    res.send(reviews);
 });
 
 module.exports = app; 

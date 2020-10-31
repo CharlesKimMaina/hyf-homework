@@ -12,11 +12,12 @@ class Circle{
     }
 
     getArea(){
-        return Math.PI * Math.pow(this.radius, 2);
+        return Math.PI * this.radius * this.radius;
     }
 }
 
-const circle = new Circle(20);
+const circle = new Circle(25);
+
 console.log(circle.getDiameter());
 console.log(circle.getCircumference());
 console.log(circle.getArea());
