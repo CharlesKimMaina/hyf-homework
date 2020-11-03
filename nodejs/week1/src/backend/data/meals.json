@@ -5,7 +5,16 @@
     "maxNumberOfGuests": 4,
     "description": "A nice night out enjoying delicious indian food",
     "createdAt": "2020/06/08 14:34",
-    "price": 69
+    "price": 69,
+    "reviews": [
+      {
+        "id": 1,
+        "numberOfStars": 4,
+        "content": "Best meal served",
+        "mealId": 1,
+        "createdAt": "2020/07/08 14:34"
+      }
+    ]
   },
 
   {
@@ -14,7 +23,16 @@
     "maxNumberOfGuests": 18,
     "description": "booze with great chicken cripsy",
     "createdAt": "2020/06/07 21:38",
-    "price": 135
+    "price": 135,
+    "reviews": [
+      {
+        "id": 2,
+        "numberOfStars": 4,
+        "content": "Yummy barflychikie",
+        "mealId": 2,
+        "createdAt": "2020/08/07 14:44"
+      }
+    ]
   },
 
   {
@@ -23,7 +41,16 @@
     "maxNumberOfGuests": 20,
     "description": "Go spicy with some Asians curry flavours",
     "createdAt": "2020/06/09 18:44",
-    "price": 58
+    "price": 58,
+    "reviews": [
+      {
+        "id": 3,
+        "numberOfStars": 2,
+        "content": "too spicy",
+        "mealId": 3,
+        "createdAt": "2020/09/12 16:54"
+      }
+    ]
   },
 
   {
@@ -32,7 +59,16 @@
     "maxNumberOfGuests": 16,
     "description": "Yummy Beefy deepfly",
     "createdAt": "2020/06/02 20:46",
-    "price": 117
+    "price": 117,
+    "reviews": [
+      {
+        "id": 4,
+        "numberOfStars": 5,
+        "content": "Best munch ever",
+        "mealId": 4,
+        "createdAt": "2020/08/10 16:14"
+      }
+    ]
   },
 
   {
@@ -41,7 +77,16 @@
     "maxNumberOfGuests": 12,
     "description": "get sundowner rostie beef to usher the dusk in",
     "createdAt": "2020/06/02 21:45",
-    "price": 163
+    "price": 163,
+    "reviews": [
+      {
+        "id": 5,
+        "numberOfStars": 5,
+        "content": "cool nighty clunchy beef soup",
+        "mealId": 5,
+        "createdAt": "2020/08/13 18:27"
+      }
+    ]
   },
 
   {
@@ -50,7 +95,16 @@
     "maxNumberOfGuests": 7,
     "description": "Go green,vegetarian diet special",
     "createdAt": "2020/06/03 14:34",
-    "price": 43
+    "price": 43,
+    "reviews": [
+      {
+        "id": 6,
+        "numberOfStars": 2,
+        "content": "Boring veggies",
+        "mealId": 6,
+        "createdAt": "2020/08/14 20:24"
+      }
+    ]
   },
 
   {
@@ -59,7 +113,16 @@
     "maxNumberOfGuests": 5,
     "description": "Tilapia fillets laced with lemon sauce and butter soup",
     "createdAt": "2020/06/07 16:53",
-    "price": 83
+    "price": 83,
+    "reviews": [
+      {
+        "id": 7,
+        "numberOfStars": 2,
+        "content": "can be better in future",
+        "mealId": 7,
+        "createdAt": "2020/08/15 15:55"
+      }
+    ]
   },
 
   {
@@ -68,7 +131,16 @@
     "maxNumberOfGuests": 21,
     "description": "Crunchy porkie with booze",
     "createdAt": "2020/06/18 18:15",
-    "price": 64
+    "price": 64,
+    "reviews": [
+      {
+        "id": 8,
+        "numberOfStars": 2,
+        "content": "too small, put more at next time",
+        "mealId": 12,
+        "createdAt": "2020/08/25 15:55"
+      }
+    ]
   },
 
   {
@@ -77,7 +149,16 @@
     "maxNumberOfGuests": 17,
     "description": "fast food lasagne",
     "createdAt": "2020/06/23 17:32",
-    "price": 48
+    "price": 48,
+    "reviews": [
+      {
+        "id": 9,
+        "numberOfStars": 4,
+        "content": "great pork",
+        "mealId": 11,
+        "createdAt": "2020/08/18 18:55"
+      }
+    ]
   },
 
   {
@@ -86,7 +167,16 @@
     "maxNumberOfGuests": 7,
     "description": "Go wild crunchy",
     "createdAt": "2020/06/23 16:18",
-    "price": 207
+    "price": 207,
+    "reviews": [
+      {
+        "id": 10,
+        "numberOfStars": 5,
+        "content": "best deer meat",
+        "mealId": 10,
+        "createdAt": "2020/08/28 14:35"
+      }
+    ]
   },
 
   {
@@ -95,7 +185,16 @@
     "maxNumberOfGuests": 13,
     "description": "fast porkies with booze",
     "createdAt": "2020/06/26 10:54",
-    "price": 87
+    "price": 87,
+    "reviews": [
+      {
+        "id": 11,
+        "numberOfStars": 2,
+        "content": "can be better",
+        "mealId": 9,
+        "createdAt": "2020/09/04 13:25"
+      }
+    ]
   },
 
   {
@@ -104,6 +203,15 @@
     "maxNumberOfGuests": 9,
     "description": "lets do blue economy",
     "createdAt": "2020/06/29 12:34",
-    "price": 118
+    "price": 118,
+    "reviews": [
+      {
+        "id": 12,
+        "numberOfStars": 4,
+        "content": "great fast porkies",
+        "mealId": 8,
+        "createdAt": "2020/09/13 12:28"
+      }
+    ]
   }
 ]

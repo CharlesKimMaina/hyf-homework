@@ -9,10 +9,19 @@ app.get("/", async (req, res) => {
     res.send("Meal Sharing Web App");
 });
 
-app.get("/meals", async (req, res) => {
-
-    res.send(module.exports = {meals,reviews});
+app.get("/meals", (req, res) =>{
+        const mealWithReview = meals
+        .map(meal => {
+            meal.reviews = reviews.filter(review => review.mealId === meal.id);
+            return meal;}       
+)
+res.send(mealWithReview);
 }); 
+    
+
+/*app.get("/meals", async (req, res) => {
+    res.send(module.exports = {meals,reviews});
+});*/ 
 
 
 app.get("/reservations", (req, res)=>{
@@ -33,12 +42,12 @@ app.get("/large-meals", (req, res)=>{
     res.send(largeMeals)
 });
 
-app.get("/meals", (req, res)=>{
+app.get("/meal", (req, res)=>{
     const randomMeal = meals[Math.floor(Math.random() * meals.length)];
     res.send(randomMeal);
 });
 
-app.get("/reservations", (req, res)=>{
+app.get("/reservation", (req, res)=>{
     const randomReservation = 
     reservations[Math.floor(Math.random() * reservations.length)];
     res.send(randomReservation);
@@ -48,4 +57,4 @@ app.get("/reviews", (req, res)=>{
     res.send(reviews);
 });
 
-module.exports = app; 
+module.exports = app;
