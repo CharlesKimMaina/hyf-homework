@@ -10,19 +10,13 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/meals", (req, res) =>{
-        const mealWithReview = meals
-        .map(meal => {
-            meal.reviews = reviews.filter(review => review.mealId === meal.id);
-            return meal;}       
+    const mealWithReview = meals.map(meal => {
+    meal.reviews = reviews.filter(review => review.mealId === meal.id);
+    return meal;}       
 )
 res.send(mealWithReview);
 }); 
     
-
-/*app.get("/meals", async (req, res) => {
-    res.send(module.exports = {meals,reviews});
-});*/ 
-
 
 app.get("/reservations", (req, res)=>{
     res.send(reservations);
