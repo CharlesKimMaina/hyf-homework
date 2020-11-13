@@ -1,0 +1,60 @@
+#profileDescription{}
+
+h1{font-size: 65px;font-style:bold;}
+
+h2{font-size: 50px;font-style:bold;}
+
+.wholecontainer{flex-wrap:wrap; padding-left: 50px; 
+    padding-right:100px;}
+
+
+p{font-family:OpenSans, sans-serif;
+font-size: 30px;}
+
+.navbar{display:flex; flex-direction: row;justify-content: space-between;}
+
+
+.profilebox{display:flex;
+flex-direction:row;}
+
+.country{display: block;}
+
+.clientadress{display:flex;
+    flex-direction:row;}
+
+a{padding:10px; 
+text-decoration:underline;
+color:blue;font-size: 35px;}
+
+.interestingItems{font-size: 35px;color: fuchsia;}
+
+.products{display:flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content:space-evenly;}
+
+.products2{display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:space-evenly;}
+
+    .buttons{display:flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content:space-between;}
+
+    .creditcardnumber{display:block;}
+
+    label{line-height: 4;}
+
+.progressbar{height:40px; width:100%;background-color: forestgreen;}
+
+.nextpage{float:right;background-color:  darkmagenta;}
+
+.submitbutton{background-color: green;
+display:flex;align-items: flex-end;
+width: 180px; font-weight: bold;font-size: x-large;}
+
+.previouspage{background-color: chartreuse;
+    display:flex; align-items: flex-start;}
+

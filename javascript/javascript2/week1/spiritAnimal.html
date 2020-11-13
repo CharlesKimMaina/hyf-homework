@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>thetet</h1>
+
+<input id="nameInput" placeholder="type your name"></input>
+<input type="submit" id="nameId">
+    <script>
+        const nameInput = document.getElementById("nameInput");
+const nameId = document.getElementById("nameId");
+const body = document.querySelector("body");
+const randomNames = ["jumbo", "horse", "lion", "rabbit"];
+
+nameId.addEventListener("click", () => {
+  let randomIndex = Math.floor(Math.random() * randomNames.length);
+  let randomName = randomNames[randomIndex];
+  let h1 = document.createElement("h1");
+  h1.appendChild(document.createTextNode(nameInput.value));
+  h1.appendChild(document.createTextNode("-"));
+  h1.appendChild(document.createTextNode(randomName));
+  body.appendChild(h1);
+
+  nameInput.value = "";
+});
+
+    </script>
+</body>
+</html>

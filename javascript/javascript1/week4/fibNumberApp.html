@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fib(number) {
+    let previousNumber;
+    let current = 1;
+    let next = 0;
+​
+    for (let i = 0; i < number.length; i++) {
+        previousNumber = next;
+        next = next + current;
+        current = previousNumber;
+    }
+​
+    return current;
+}
+​
+const seq= fib(27);
+​
+console.log(seq);
+    </script>
+</body>
+</html>
