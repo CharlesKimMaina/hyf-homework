@@ -1,6 +1,0 @@
-coutries i have visited;
-
-1. Kenya.
-2. Denmark.
-3.Sweden.
-4.Germany
