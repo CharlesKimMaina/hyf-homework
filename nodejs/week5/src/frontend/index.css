@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+* {
+  font-family: "Montserrat", sans-serif;
+  color: blue;
+}
+
+a[href] {
+  font-weight: bold;
+}
+
+.mealApp {
+  background-color: limegreen;
+  padding: 20px;
+}
+
+a[href="https://github.com/CharlesKimMaina"]
+{
+  background-color: blueviolet;
+}
+
+mainNav {
+  background-color: cyan;
+}
+
+.picture-about {
+  height: 75px;
+  width: 90px;
+}
+
+.mealGallery {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.galleries {
+  padding: 15px;
+}
+
+.mealOffers img {
+  width: 100%;
+  height: 250px;
+  margin: 7px;
+  margin-left: 0;
+  padding: 10px;
+}
+
+.mealTitle {
+  padding: 10px;
+  color: #000000;
+  text-decoration: underline;
+}
+
+.col-1 {
+  width: 30%;
+  border: 1px solid #eee;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 20px;
+}
+
+.col-2 {
+  width: 30%;
+  border: 1px solid #eee;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 20px;
+}
+
+.mealRows {
+  display: flex;
+}
+
+.mealRows2 {
+  display: flex;
+}
+
+.mealRows3 {
+  display: flex;
+}
+
+.mealRows4 {
+  display: flex;
+}
+
+.mealRows5 {
+  display: flex;
+}
+
+.mealRows6 {
+  display: flex;
+}
+
+@media screen and (max-width: 960px) {
+  .container {
+    margin-top: 30px;
+    padding-top: 20px;
+    line-height: 1.5;
+  }
+}
