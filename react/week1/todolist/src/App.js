@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Todos from './components/Todos';
 import Title from './components/Title';
 
@@ -12,7 +11,6 @@ function App() {
   ]
   return (
     <div className="App">
-
       <Title/>
      <Todos duties={todos}/>     
  
