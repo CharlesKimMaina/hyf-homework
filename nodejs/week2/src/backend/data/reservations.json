@@ -1,0 +1,85 @@
+[
+  {
+    "id": 1,
+    "name": "Benjamin Hughes",
+    "email": "benjamin@hughes.dk",
+    "mealId": 1
+  },
+
+  {
+    "id": 2,
+    "name": "Rita Kim",
+    "email": "ritakim@cagen.dk",
+    "mealId": 2
+  },
+
+  {
+    "id": 3,
+    "name": "Jerry Kings",
+    "email": "jerrykings@digiscan.dk",
+    "mealId": 3
+  },
+
+  {
+    "id": 4,
+    "name": "Charlie Rawlings",
+    "email": "charliesR@equitybank.com",
+    "mealId": 4
+  },
+
+  {
+    "id": 5,
+    "name": "Charles Maina",
+    "email": "ckmaina@gmail.dk",
+    "mealId": 5
+  },
+
+  {
+    "id": 6,
+    "name": "Stanley bruce",
+    "email": "stanbruc@danquest.dk",
+    "mealId": 6
+  },
+
+  {
+    "id": 7,
+    "name": "Janie Rogers",
+    "email": "janies@fremtid.dk",
+    "mealId": 7
+  },
+
+  {
+    "id": 8,
+    "name": "frank kamanga",
+    "email": "fk@gmail.com",
+    "mealId": 12
+  },
+
+  {
+    "id": 9,
+    "name": "lily kim",
+    "email": "lk@yahoo.com",
+    "mealId": 10
+  },
+
+  {
+    "id": 10,
+    "name": "Zack kadhuu",
+    "email": "zk@hotmail.dk",
+    "mealId": 9
+  },
+
+  {
+    "id": 11,
+    "name": "mario luigi",
+    "email": "ml@gmail.co.uk",
+    "mealId": 8
+  },
+
+  {
+    "id": 12,
+    "name": "janie shaun",
+    "email": "js@hyf.dk",
+    "mealId": 11
+  }
+]
