@@ -1,8 +1,9 @@
 mangos.
 oranges.
-lemon
+lemon.
 apple.
 pear.
 berries.
 watermelon.
-strawberry
+strawberry.
+banana.
